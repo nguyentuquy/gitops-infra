@@ -3,9 +3,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-app
+  name: react-app-deployment
 spec:
-  replicas: 1  # Increase replicas for HA
+  replicas: 2  # Increase replicas for HA
   selector:
     matchLabels:
       app: react-app
