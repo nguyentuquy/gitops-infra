@@ -20,6 +20,6 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: NIFI_WEB_HTTPS_PORT
-              value: 9080
+              value: "9080"
           ports:
             - containerPort: 9080
