@@ -43,18 +43,3 @@ spec:
             limits:
               memory: "250Mi"
               cpu: "200m"
-
-# Service (Optional - adjust based on your needs)
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: react-app-service
-spec:
-  selector:
-    app: react-app
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: LoadBalancer  # Adjust service type based on your environment
