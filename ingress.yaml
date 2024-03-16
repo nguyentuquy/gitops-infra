@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: react-app-ingress
+spec:
+  rules:
+    - http:
+        host: qq.com
+        paths:
+          - pathType: Prefix
+            path: /  # Adjust path prefix if needed
+            backend:
+              service:
+                name: react-app  # Replace with your service name
+                port:
+                  number: 80
