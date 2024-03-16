@@ -18,5 +18,8 @@ spec:
         - name: nifi-app
           image: quynt/nifi:1.23.1
           imagePullPolicy: IfNotPresent
+          env:
+            - name: NIFI_WEB_HTTPS_PORT
+              value: 9080
           ports:
-            - containerPort: 8443
+            - containerPort: 9080

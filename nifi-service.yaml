@@ -7,6 +7,6 @@ spec:
   selector:
     app: nifi-app-pod
   ports:
-    - port: 8443
+    - port: 9080
       protocol: TCP
-      targetPort: 8443
+      targetPort: 9080
