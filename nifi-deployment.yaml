@@ -1,27 +1,28 @@
-# Deployment with HA considerations
 
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: extensions/v1beta1
 metadata:
   name: nifi-app-deployment
 spec:
-  replicas: 1  # Increase replicas for HA
+  replicas: 2
   selector:
     matchLabels:
-      app: nifi-app-pod # deployment control pods, that have these name
+      app: nifi-app-pod
   template:
     metadata:
       labels:
-        app: nifi-app-pod # pod's name
+        app: nifi-app-pod
     spec:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
-        - name: nifi-app
-          image: quynt/nifi:1.23.1
-          imagePullPolicy: IfNotPresent
-          env:
-            - name: NIFI_WEB_HTTPS_PORT
-              value: "9080"
-            - name: NIFI_WEB_HTTPS_HOST
-              value: 0.0.0.0
-          ports:
-            - containerPort: 9080
+      - name: nifi-container
+        image: quynt/nifi:1.23.1
+        ports:
+        - containerPort: 9080
+          name: http
+        env:
+        - name: NIFI_WEB_HTTP_PORT
+          value: "9080"
+        - name: NIFI_WEB_HTTPS_HOST
+          value: 0.0.0.0
