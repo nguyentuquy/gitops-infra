@@ -4,7 +4,7 @@ metadata:
   name: react-app-ingress
 spec:
   rules:
-  - host: "qq.local"
+  - host: "qa.qq.local"
     http:
       paths:
       - pathType: Prefix
