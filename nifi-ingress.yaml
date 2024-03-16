@@ -13,4 +13,4 @@ spec:
           service:
             name: nifi-app-service
             port:
-              number: 9080
+              number: 80
