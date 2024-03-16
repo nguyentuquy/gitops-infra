@@ -22,7 +22,7 @@ spec:
             - containerPort: 80
           livenessProbe:
             httpGet:
-              path: /healthz  # Adjust path based on your health check endpoint
+              path: /  # Adjust path based on your health check endpoint
               port: 80
               initialDelaySeconds: 120
               periodSeconds: 20
@@ -30,7 +30,7 @@ spec:
               timeoutSeconds: 5
           readinessProbe:
             httpGet:
-              path: / (or a specific readiness endpoint)
+              path: /
               port: 80
               initialDelaySeconds: 30
               periodSeconds: 10
