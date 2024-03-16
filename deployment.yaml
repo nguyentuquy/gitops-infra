@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: quynt/gitops01:e9eb92dd07c0e1d13a73f0cadcbb5c189dd9dcd2
+          image: quynt/gitops01:040bce58700d34326c549d024c409f73457768ce
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
