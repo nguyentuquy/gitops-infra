@@ -1,9 +1,11 @@
+# Deployment with HA considerations
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: react-app
 spec:
-  replicas: 1
+  replicas: 3  # Increase replicas for HA
   selector:
     matchLabels:
       app: react-app
@@ -14,7 +16,45 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: quynt/gitops01:688668f2362c8d53208b1e5e9db08dc521ad4377
-          imagePullPolicy: Always
+          image: quynt/gitops01:fe22028268f3320f11ad4f67ce391cddb0cbf270
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /healthz  # Adjust path based on your health check endpoint
+              port: 80
+              initialDelaySeconds: 120
+              periodSeconds: 20
+              successThreshold: 1
+              timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: / (or a specific readiness endpoint)
+              port: 80
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              successThreshold: 1
+              timeoutSeconds: 5
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "100m"
+            limits:
+              memory: "250Mi"
+              cpu: "200m"
+
+# Service (Optional - adjust based on your needs)
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app-service
+spec:
+  selector:
+    app: react-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer  # Adjust service type based on your environment
