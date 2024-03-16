@@ -5,7 +5,7 @@ minikube start --driver=docker
 
 # forward port of app
 ```
-k port-forward svc/react-app 3001:80 -n gitopstutorial
+k port-forward svc/react-app 3001:80 -n gitopstutorial &
 ```
 
 # forward ports of argocd
