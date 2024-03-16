@@ -4,13 +4,13 @@ metadata:
   name: react-app-ingress
 spec:
   rules:
-  - host: "qq.local"
+  - host: "nifi.local"
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: react-app-service
+            name: nifi-app-service
             port:
               number: 80
