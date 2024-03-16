@@ -24,16 +24,16 @@ spec:
             httpGet:
               path: /  # Adjust path based on your health check endpoint
               port: 80
-              initialDelaySeconds: 120
-              periodSeconds: 20
+              initialDelaySeconds: 1
+              periodSeconds: 1
               successThreshold: 1
               timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /
               port: 80
-              initialDelaySeconds: 30
-              periodSeconds: 10
+              initialDelaySeconds: 1
+              periodSeconds: 1
               successThreshold: 1
               timeoutSeconds: 5
           resources:
