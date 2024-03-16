@@ -8,11 +8,11 @@ spec:
   replicas: 2  # Increase replicas for HA
   selector:
     matchLabels:
-      app: react-app
+      app: react-app-pod # deployment control pods, that have these name
   template:
     metadata:
       labels:
-        app: react-app
+        app: react-app-pod # pod's name
     spec:
       containers:
         - name: react-app
