@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: react-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: react-app
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: quynt/gitops01:4d4b7a8d5b8cc48f7af7973f1d79ed12556a3274
+          image: quynt/gitops01:472f006c4c500eb3ec00fda2c4f339cfec31d2bb
           imagePullPolicy: Always
           ports:
             - containerPort: 80
