@@ -3,13 +3,14 @@ kind: Ingress
 metadata:
   name: react-app-ingress
 spec:
-    rules:
-    - http:
-        paths:
-          - pathType: Prefix  # Handle requests starting with the specified path (optional)
-            path: /  # Adjust the path prefix if your application needs a specific path
-            backend:
-              service:
-                name: react-app  # Replace with the name of your service
-                port:
-                  number: 80
+  rules:
+  - host: "qq.local"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: react-app-service
+            port:
+              number: 80
