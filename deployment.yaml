@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: react-app
 spec:
-  replicas: 3  # Increase replicas for HA
+  replicas: 1  # Increase replicas for HA
   selector:
     matchLabels:
       app: react-app
