@@ -21,5 +21,7 @@ spec:
           env:
             - name: NIFI_WEB_HTTPS_PORT
               value: "9080"
+            - name: NIFI_WEB_HTTPS_HOST
+              value: 0.0.0.0
           ports:
             - containerPort: 9080
