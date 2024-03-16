@@ -16,13 +16,11 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       containers:
-      - name: nifi-container
-        image: quynt/nifi:1.23.1
-        ports:
-        - containerPort: 9080
-          name: http
-        env:
-        - name: NIFI_WEB_HTTP_PORT
-          value: "9080"
-        - name: NIFI_WEB_HTTPS_HOST
-          value: 0.0.0.0
+        - name: nifi-app
+          image: quynt/nifi:1.23.1
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: NIFI_WEB_HTTPS_PORT
+              value: "9080"
+          ports:
+            - containerPort: 9080
