@@ -1,0 +1,22 @@
+# Deployment with HA considerations
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nifi-app-deployment
+spec:
+  replicas: 1  # Increase replicas for HA
+  selector:
+    matchLabels:
+      app: nifi-app-pod # deployment control pods, that have these name
+  template:
+    metadata:
+      labels:
+        app: nifi-app-pod # pod's name
+    spec:
+      containers:
+        - name: nifi-app
+          image: quynt/nifi:1.23.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9080
