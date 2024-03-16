@@ -5,7 +5,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: react-app-template
+    app: react-app
   ports:
     - port: 80
       protocol: TCP
