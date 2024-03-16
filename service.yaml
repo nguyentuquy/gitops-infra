@@ -10,3 +10,16 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nifi-app-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nifi-app-pod
+  ports:
+    - port: 9080
+      protocol: TCP
+      targetPort: 9080

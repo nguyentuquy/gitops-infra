@@ -14,3 +14,11 @@ spec:
             name: react-app-service
             port:
               number: 80
+      
+      - pathType: Prefix
+        path: "/nifi"
+        backend:
+          service:
+            name: nifi-app-service
+            port:
+              number: 80
